@@ -1,0 +1,13 @@
+---
+title: "Gapminder Analysis"
+format: html
+---
+
+# Welcome to the Gapminder Data Exploration Website
+
+The Gapminder dataset provides socio-economic and health indicators for countries worldwide, including GDP per capita, life expectancy, and population over time.
+
+## Explore More:
+- [Life Expectancy and GDP per Capita](life-gdp.qmd)
+- [Life Expectancy and Population](life-population.qmd)  
+- [Country Analysis](country.qmd)

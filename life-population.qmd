@@ -1,0 +1,25 @@
+---
+title: "Life Expectancy and Population"
+format: html
+---
+
+## Introduction
+The Gapminder dataset allows us to explore the relationship between life expectancy and population size. While population size does not directly determine life expectancy, countries with larger populations often show diverse health conditions, economic structures, and healthcare systems.
+
+## Data Visualization
+
+
+```{r}
+# Load necessary libraries
+library(ggplot2)
+library(gapminder)
+
+# Create scatter plot
+ggplot(gapminder, aes(x = pop, y = lifeExp)) +
+  geom_point(alpha = 0.6) +
+  scale_x_log10() +  # Log scale for better visualization
+  labs(title = "Life Expectancy vs. Population",
+       x = "Population (log scale)",
+       y = "Life Expectancy (years)") +
+  theme_minimal()
+```

@@ -1,0 +1,93 @@
+[
+  {
+    "objectID": "create-dataset.html",
+    "href": "create-dataset.html",
+    "title": "Create the Gapminder dataset",
+    "section": "",
+    "text": "# Import necessary libraries\nimport pandas as pd\nfrom gapminder import gapminder\n\n# Rename 'lifeExp' to 'life_expectancy' and 'gdpPercap' to 'gdp_per_capita'\ngapminder = gapminder.rename(columns={'lifeExp': 'life_expectancy',\n                                      'pop': 'population_millions', \n                                      'gdpPercap': 'gdp_per_capita'})\n\n# Convert population to millions\ngapminder['population_millions'] = gapminder['population_millions'] / 1_000_000\n\n# Create a new pandas DataFrame from the modified gapminder data\ngapminder_df = pd.DataFrame(gapminder)\n\n# Save the DataFrame as a CSV file\ngapminder_df.to_csv('gapminder.csv', index=False)\n\n# Print the first 3 rows of the DataFrame\nprint(gapminder_df.head(3))\n\n       country continent  year  life_expectancy  population_millions  \\\n0  Afghanistan      Asia  1952           28.801             8.425333   \n1  Afghanistan      Asia  1957           30.332             9.240934   \n2  Afghanistan      Asia  1962           31.997            10.267083   \n\n   gdp_per_capita  \n0      779.445314  \n1      820.853030  \n2      853.100710"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "life-gdp.html",
+    "href": "life-gdp.html",
+    "title": "Life Expectancy and GDP per Capita",
+    "section": "",
+    "text": "The Gapminder dataset suggests a strong correlation between a country’s GDP per capita and life expectancy. Generally, wealthier nations tend to have higher life expectancies. However, this relationship is not strictly linear, and other factors such as healthcare, education, and inequality influence life expectancy."
+  },
+  {
+    "objectID": "life-gdp.html#introduction",
+    "href": "life-gdp.html#introduction",
+    "title": "Life Expectancy and GDP per Capita",
+    "section": "",
+    "text": "The Gapminder dataset suggests a strong correlation between a country’s GDP per capita and life expectancy. Generally, wealthier nations tend to have higher life expectancies. However, this relationship is not strictly linear, and other factors such as healthcare, education, and inequality influence life expectancy."
+  },
+  {
+    "objectID": "life-gdp.html#data-visualization",
+    "href": "life-gdp.html#data-visualization",
+    "title": "Life Expectancy and GDP per Capita",
+    "section": "Data Visualization",
+    "text": "Data Visualization\n\nlibrary(ggplot2)\nlibrary(gapminder)\n\n# Create scatter plot\nggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +\n  geom_point(alpha = 0.6) +\n  scale_x_log10() +  # Log scale for better visualization\n  labs(title = \"Life Expectancy vs. GDP per Capita\",\n       x = \"GDP per Capita (log scale)\",\n       y = \"Life Expectancy (years)\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "country.html",
+    "href": "country.html",
+    "title": "Country Analysis: Trends Over Time",
+    "section": "",
+    "text": "This page explores how life expectancy, GDP per capita, and population have changed over time for a selected country using the Gapminder dataset. Understanding these trends can provide insights into a country’s economic growth, healthcare development, and demographic shifts. Selected Country: China"
+  },
+  {
+    "objectID": "country.html#introduction",
+    "href": "country.html#introduction",
+    "title": "Country Analysis: Trends Over Time",
+    "section": "",
+    "text": "This page explores how life expectancy, GDP per capita, and population have changed over time for a selected country using the Gapminder dataset. Understanding these trends can provide insights into a country’s economic growth, healthcare development, and demographic shifts. Selected Country: China"
+  },
+  {
+    "objectID": "country.html#visualization-of-the-trends",
+    "href": "country.html#visualization-of-the-trends",
+    "title": "Country Analysis: Trends Over Time",
+    "section": "Visualization of the Trends",
+    "text": "Visualization of the Trends\n\n# Load necessary libraries\nlibrary(ggplot2)\nlibrary(gapminder)\nlibrary(dplyr)\n\n\n 次のパッケージを付け加えます: 'dplyr' \n\n\n 以下のオブジェクトは 'package:stats' からマスクされています:\n\n    filter, lag\n\n\n 以下のオブジェクトは 'package:base' からマスクされています:\n\n    intersect, setdiff, setequal, union\n\n# Select a specific country (e.g., China)\nselected_country &lt;- \"China\"\n\n# Filter data for the chosen country\ncountry_data &lt;- gapminder %&gt;% filter(country == selected_country)\n\n# Create line plots for Life Expectancy, GDP per Capita, and Population\nggplot(country_data, aes(x = year)) +\n  geom_line(aes(y = lifeExp, color = \"Life Expectancy\"), size = 1.2) +\n  geom_line(aes(y = gdpPercap / 500, color = \"GDP per Capita (scaled)\"), size = 1.2) +  # Scale for better visualization\n  geom_line(aes(y = pop / 1e7, color = \"Population (scaled)\"), size = 1.2) +  # Scale for better visualization\n  labs(title = paste(\"Trends in\", selected_country, \"Over Time\"),\n       x = \"Year\",\n       y = \"Value (scaled for comparison)\",\n       color = \"Indicator\") +\n  theme_minimal()\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Gapminder Analysis",
+    "section": "",
+    "text": "The Gapminder dataset provides socio-economic and health indicators for countries worldwide, including GDP per capita, life expectancy, and population over time.\n\n\n\nLife Expectancy and GDP per Capita\nLife Expectancy and Population\n\nCountry Analysis"
+  },
+  {
+    "objectID": "index.html#explore-more",
+    "href": "index.html#explore-more",
+    "title": "Gapminder Analysis",
+    "section": "",
+    "text": "Life Expectancy and GDP per Capita\nLife Expectancy and Population\n\nCountry Analysis"
+  },
+  {
+    "objectID": "life-population.html",
+    "href": "life-population.html",
+    "title": "Life Expectancy and Population",
+    "section": "",
+    "text": "The Gapminder dataset allows us to explore the relationship between life expectancy and population size. While population size does not directly determine life expectancy, countries with larger populations often show diverse health conditions, economic structures, and healthcare systems."
+  },
+  {
+    "objectID": "life-population.html#introduction",
+    "href": "life-population.html#introduction",
+    "title": "Life Expectancy and Population",
+    "section": "",
+    "text": "The Gapminder dataset allows us to explore the relationship between life expectancy and population size. While population size does not directly determine life expectancy, countries with larger populations often show diverse health conditions, economic structures, and healthcare systems."
+  },
+  {
+    "objectID": "life-population.html#data-visualization",
+    "href": "life-population.html#data-visualization",
+    "title": "Life Expectancy and Population",
+    "section": "Data Visualization",
+    "text": "Data Visualization\n\n# Load necessary libraries\nlibrary(ggplot2)\nlibrary(gapminder)\n\n# Create scatter plot\nggplot(gapminder, aes(x = pop, y = lifeExp)) +\n  geom_point(alpha = 0.6) +\n  scale_x_log10() +  # Log scale for better visualization\n  labs(title = \"Life Expectancy vs. Population\",\n       x = \"Population (log scale)\",\n       y = \"Life Expectancy (years)\") +\n  theme_minimal()"
+  }
+]
